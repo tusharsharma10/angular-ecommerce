@@ -8,6 +8,7 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { LoginComponent } from './login/login.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'order-success', component:OrderSuccessComponent},
   {path:'login', component:LoginComponent},
   {path:'admin/orders', component:AdminOrdersComponent},
-  {path:'admin/products', component:AdminProductsComponent}
+  {path:'admin/products', component:AdminProductsComponent},
+  {path:'my/orders', component:MyOrdersComponent}
   
 
 ];
