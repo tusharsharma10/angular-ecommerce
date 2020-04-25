@@ -18,6 +18,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './service/auth.service';
+import { AuthGuardService } from './service/auth-guard.service';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { AuthService } from './service/auth.service';
     AngularFireAuthModule,
     NgbModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
