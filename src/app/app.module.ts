@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './service/auth.service';
 import { AuthGuardService } from './service/auth-guard.service';
 import { UserService } from './service/user.service';
+import { AdminAuthGuardService } from './service/admin-auth-guard.service';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { UserService } from './service/user.service';
     AngularFireAuthModule,
     NgbModule
   ],
-  providers: [AuthService,AuthGuardService,UserService],
+  providers: [AuthService,AuthGuardService,UserService,AdminAuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

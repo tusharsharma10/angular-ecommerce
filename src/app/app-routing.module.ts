@@ -10,6 +10,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AuthGuardService } from './service/auth-guard.service';
+import { AdminAuthGuardService } from './service/admin-auth-guard.service';
 
 
 const routes: Routes = [
@@ -18,10 +19,13 @@ const routes: Routes = [
   {path:'products', component:ProductsComponent},
   {path:'shopping-cart', component:ShoppingCartComponent},
   {path:'login', component:LoginComponent},
+  
   {path:'checkout', component:CheckoutComponent, canActivate: [AuthGuardService]},
   {path:'order-success', component:OrderSuccessComponent , canActivate: [AuthGuardService]},
-  {path:'admin/orders', component:AdminOrdersComponent , canActivate: [AuthGuardService]},
-  {path:'admin/products', component:AdminProductsComponent , canActivate: [AuthGuardService]},
+  
+  {path:'admin/orders', component:AdminOrdersComponent , canActivate: [AuthGuardService,AdminAuthGuardService]},
+  {path:'admin/products', component:AdminProductsComponent , canActivate: [AuthGuardService,AdminAuthGuardService]},
+  
   {path:'my/orders', component:MyOrdersComponent, canActivate: [AuthGuardService]}
   
 
