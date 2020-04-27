@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {AngularFireModule} from '@angular/fire';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import { environment } from 'src/environments/environment';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -22,6 +22,7 @@ import { AuthGuardService } from './service/auth-guard.service';
 import { UserService } from './service/user.service';
 import { AdminAuthGuardService } from './service/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { CategoryService } from './service/category.service';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AngularFireAuthModule,
     NgbModule
   ],
-  providers: [AuthService,AuthGuardService,UserService,AdminAuthGuardService],
+  providers: [AuthService,AuthGuardService,UserService,AdminAuthGuardService,CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
