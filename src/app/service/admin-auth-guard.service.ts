@@ -11,15 +11,17 @@ export class AdminAuthGuardService implements CanActivate{
 
   constructor(private authService:AuthService, private userService: UserService) { }
 
-// ultimately returns a boolean value
-// so in app-routing module this property controls access on particular routes.
+/* ultimately returns a boolean value
+ so in app-routing module this property controls access on particular routes.
+valueChanges() method returns a Observable 
+ */
   canActivate(){
 
-      return this.authService.user$.pipe(  
-
-        switchMap(user =>  this.userService.get(user.uid).valueChanges()),
+      return this.authService.appUser$.pipe(  
+      
         map(appUser => appUser.isAdmin)
-    );
+    
+      );
 
   }
 
