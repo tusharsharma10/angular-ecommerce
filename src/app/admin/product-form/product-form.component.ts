@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { ProductService } from 'src/app/service/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/models/product.model';
 
 
 @Component({
@@ -15,7 +16,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProductFormComponent implements OnInit {
 
   categories$;
-  product;
+  product:Product = {category:"", price:0, imageUrl:"",title:""};
+  product2;
   id;
 
 
@@ -34,7 +36,7 @@ export class ProductFormComponent implements OnInit {
       .getOneProduct(this.id)
       .snapshotChanges()
       .pipe( take(1) )
-      .subscribe( p => this.product = p.payload.val());
+      .subscribe( p => this.product2 = p.payload.val());
 
     
 
@@ -46,6 +48,14 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit(): void {
     
+    if(this.product2){
+      this.product.category = this.product2.category;
+      this.product.price = this.product2.price;
+      this.product.imageUrl = this.product2.imageUrl;
+      this.product.title = this.product2.title;
+    }
+    
+  
   }
 
   save(product){
@@ -59,6 +69,17 @@ export class ProductFormComponent implements OnInit {
     this.router.navigate(['/admin/products']);
   }
 
+
+  delete(){
+
+    if(confirm('Are you sure you want to delete this product?')){
+
+      this.productService.deleteProduct(this.id);
+      this.router.navigate(['/admin/products']);
+    }
+
+   
+  }
 
   // showConsole(){
   //   console.log(this.product);

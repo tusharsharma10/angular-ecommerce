@@ -34,4 +34,9 @@ export class ProductService {
 
   }
 
+  deleteProduct(productId){
+
+    this.db.object('/products/'+productId).remove();
+  }
+
 }
