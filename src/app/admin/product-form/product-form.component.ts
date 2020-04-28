@@ -4,6 +4,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductService } from 'src/app/service/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-form',
@@ -14,7 +15,7 @@ export class ProductFormComponent implements OnInit {
 
   categories$;
 
-  constructor(categoryService:CategoryService, private productService:ProductService) { 
+  constructor(private router:Router,categoryService:CategoryService, private productService:ProductService) { 
     
     this.categories$ = categoryService.getCategories().snapshotChanges();
     
@@ -27,6 +28,7 @@ export class ProductFormComponent implements OnInit {
   save(product){
 
    this.productService.create(product);
+   this.router.navigate(['/admin/products']);
   }
 
 }

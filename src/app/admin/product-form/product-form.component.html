@@ -52,4 +52,16 @@
 
         </form>
     </div>
+
+    <div class="col-lg-6">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" [src] = "url.value" >
+            <div class="card-body">
+              <h5 class="card-title">{{title.value}}</h5>
+              <p class="card-text">{{ price.value | currency:'USD':true }}</p>
+              
+            </div>
+          </div>
+    </div>
+
 </div>
