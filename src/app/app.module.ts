@@ -25,7 +25,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './service/category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './service/product.service';
-
+import {CustomFormsModule} from 'ngx-custom-validators';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import { ProductService } from './service/product.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    CustomFormsModule
   ],
   providers: [AuthService,AuthGuardService,UserService,AdminAuthGuardService,CategoryService,ProductService],
   bootstrap: [AppComponent]

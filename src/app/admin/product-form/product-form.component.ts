@@ -15,9 +15,8 @@ export class ProductFormComponent implements OnInit {
   categories$;
 
   constructor(categoryService:CategoryService, private productService:ProductService) { 
-    this.categories$ = categoryService.getCategories().snapshotChanges();
     
-                        
+    this.categories$ = categoryService.getCategories().snapshotChanges();
     
   }
 
