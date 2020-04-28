@@ -21,4 +21,10 @@ export class ProductService {
 
   }
 
+  getOneProduct(productId){
+
+    return this.db.object('/products/'+ productId);
+
+  }
+
 }
