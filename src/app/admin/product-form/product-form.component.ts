@@ -31,14 +31,24 @@ export class ProductFormComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     
     if(this.id) {
-     
+    
       this.productService
       .getOneProduct(this.id)
       .snapshotChanges()
       .pipe( take(1) )
-      .subscribe( p => this.product2 = p.payload.val());
+      .subscribe( p => {this.product2 = p.payload.val();
+        
+        this.product.category = this.product2.category;
+        this.product.price = this.product2.price;
+        this.product.imageUrl = this.product2.imageUrl;
+        this.product.title = this.product2.title;
+       
+      });
 
-    
+     
+     
+     
+      
 
     }
      
@@ -48,12 +58,7 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit(): void {
     
-    if(this.product2){
-      this.product.category = this.product2.category;
-      this.product.price = this.product2.price;
-      this.product.imageUrl = this.product2.imageUrl;
-      this.product.title = this.product2.title;
-    }
+   
     
   
   }
@@ -81,8 +86,8 @@ export class ProductFormComponent implements OnInit {
    
   }
 
-  // showConsole(){
-  //   console.log(this.product);
-  // }
+  showConsole(c){
+    console.log(this.product.category);
+  }
 
 }
