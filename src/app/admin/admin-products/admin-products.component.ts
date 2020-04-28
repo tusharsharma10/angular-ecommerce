@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/service/product.service';
+import { Product } from 'src/app/models/product.model';
+import { SnapshotAction } from 'angularfire2/database';
 
 @Component({
   selector: 'app-admin-products',
@@ -8,17 +10,30 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class AdminProductsComponent implements OnInit {
 
-  products$;
+ //temp:any[] = [];
+  products:any[];
+  filteredProducts:any[];
 
   constructor(private productService: ProductService) { 
 
-    this.products$ = this.productService.getAll().snapshotChanges();
+    this.productService
+   .getAll()
+   .snapshotChanges()
+   .subscribe(products => this.filteredProducts = this.products = products);
+     
+    
+   
 
   }
 
   ngOnInit(): void {
   }
 
+  filter(query:string){
+
+    this.filteredProducts = (query) ? this.products.filter(p => p.payload.val().title.toLowerCase().includes(query.toLowerCase())) : this.products ;
+
+  }
 
 
 

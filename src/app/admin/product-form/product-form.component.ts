@@ -31,7 +31,7 @@ export class ProductFormComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     
     if(this.id) {
-    
+    console.log(this.id);
       this.productService
       .getOneProduct(this.id)
       .snapshotChanges()
@@ -86,8 +86,8 @@ export class ProductFormComponent implements OnInit {
    
   }
 
-  showConsole(c){
-    console.log(this.product.category);
-  }
+  // showConsole(c){
+  //   console.log(this.product.category);
+  // }
 
 }
