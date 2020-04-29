@@ -26,6 +26,8 @@ import { CategoryService } from './service/category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './service/product.service';
 import {CustomFormsModule} from 'ngx-custom-validators';
+import { DataTablesModule } from 'angular-datatables';
+
 
 @NgModule({
   declarations: [
@@ -40,9 +42,9 @@ import {CustomFormsModule} from 'ngx-custom-validators';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
     
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,7 +53,8 @@ import {CustomFormsModule} from 'ngx-custom-validators';
     AngularFireAuthModule,
     NgbModule,
     FormsModule,
-    CustomFormsModule
+    CustomFormsModule,
+    DataTablesModule
   ],
   providers: [AuthService,AuthGuardService,UserService,AdminAuthGuardService,CategoryService,ProductService],
   bootstrap: [AppComponent]
