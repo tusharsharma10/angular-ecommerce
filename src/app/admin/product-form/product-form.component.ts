@@ -6,6 +6,7 @@ import { map, take } from 'rxjs/operators';
 import { ProductService } from 'src/app/service/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
+import { ProductDetails } from '../../models/product-details.model';
 
 
 @Component({
@@ -16,8 +17,7 @@ import { Product } from 'src/app/models/product.model';
 export class ProductFormComponent implements OnInit {
 
   categories$;
-  product:Product = {category:"", price:0, imageUrl:"",title:""};
-  temp;
+  product:Product = new Product();
   id;
 
 
@@ -36,14 +36,19 @@ export class ProductFormComponent implements OnInit {
       .getOneProduct(this.id)
       .snapshotChanges()
       .pipe( take(1) )
-      .subscribe( p => {this.temp = p.payload.val();
+      .subscribe( p => {
         
-        this.product.category = this.temp.category;
-        this.product.price = this.temp.price;
-        this.product.imageUrl = this.temp.imageUrl;
-        this.product.title = this.temp.title;
-       
+        let temp:any;
+        let key = p.key;
+        temp = p.payload.val();
+        this.product = new Product();
+        this.product.key = key;
+        this.product.productDetails = new ProductDetails();
+        this.product.productDetails = temp;
+     
       });
+       
+     
 
      
      
@@ -58,9 +63,9 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit(): void {
     
-   
-    
-  
+  //  this.product.key = "";
+  //  this.product.productDetails = this.productDetails;
+
   }
 
   save(product){

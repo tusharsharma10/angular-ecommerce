@@ -1,7 +1,15 @@
-export interface Product{
+import { ProductDetails } from './product-details.model';
 
-    price:number;
-    title:string;
-    category:string;
-    imageUrl:string;
+export class Product{
+   
+    key:string;
+    productDetails:ProductDetails;
+    
+    constructor(){
+
+        this.key = "";
+        this.productDetails = new ProductDetails();
+    }
+
+   
 }

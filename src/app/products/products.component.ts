@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../service/product.service';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from '../models/product.model';
+import { ProductDetails } from '../models/product-details.model';
 
 
 @Component({
@@ -10,8 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductsComponent {
 
-  products: any[]=[];
-  filteredProducts: any[];
+
+  products: Product[]=[];
+  filteredProducts: Product[];
   category: string;
 
   constructor(private productService: ProductService, route: ActivatedRoute) {
@@ -21,10 +24,24 @@ export class ProductsComponent {
       .snapshotChanges()
       .subscribe(products => {
         
-        products.forEach( p => this.products.push(p.payload.val()))
+        products.forEach( p => {
+          
+          let product:Product = new Product();
+          let temp:any;
+          temp = p.payload.val();
+          
+         
+          product.key = p.key;
+          
+         
+          product.productDetails = temp;
+         
+          this.products.push(product);
+         
+          });
        
         this.filteredProducts = this.products;
-      
+        console.log(this.filteredProducts[0].productDetails);
       
       });
 
@@ -35,7 +52,7 @@ export class ProductsComponent {
       this.category = params.get('category');
 
   this.filteredProducts = (this.category) ? 
-                          this.products.filter( p => p.category === this.category) :
+                          this.products.filter( p => p.productDetails.category === this.category) :
                           this.products;
 
     });

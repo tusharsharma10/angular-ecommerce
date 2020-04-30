@@ -29,6 +29,7 @@ import {CustomFormsModule} from 'ngx-custom-validators';
 import { DataTablesModule } from 'angular-datatables';
 import { ProductFliterComponent } from './products/product-fliter/product-fliter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ShoppingCartService } from './service/shopping-cart.service';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     CustomFormsModule,
     DataTablesModule
   ],
-  providers: [AuthService,AuthGuardService,UserService,AdminAuthGuardService,CategoryService,ProductService],
+  providers: [AuthService,AuthGuardService,UserService,
+    AdminAuthGuardService,CategoryService,ProductService,ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
