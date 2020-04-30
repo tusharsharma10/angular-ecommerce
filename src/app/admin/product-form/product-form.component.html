@@ -4,8 +4,9 @@
 
             <div class="form-group">
                 <label for="title">Title</label>
-                <input id="title" type="text" class="form-control" [(ngModel)]="product.title" name="title" required #title="ngModel">
-                <div *ngIf="title.touched && title.invalid"  class="alert alert-danger">
+                <input id="title" type="text" class="form-control" [(ngModel)]="product.title" name="title" required
+                    #title="ngModel">
+                <div *ngIf="title.touched && title.invalid" class="alert alert-danger">
                     Title is Required.
                 </div>
             </div>
@@ -16,36 +17,40 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
                     </div>
-                        <input id="price" [min] = "0" type="number" class="form-control" [(ngModel)]="product.price" name="price" required #price="ngModel"  >
-                   
+                    <input id="price" [min]="0" type="number" class="form-control" [(ngModel)]="product.price"
+                        name="price" required #price="ngModel">
+
                 </div>
                 <div *ngIf="price.touched && price.invalid" class="alert alert-danger">
-                   <div *ngIf="price.errors.required"> Price is Required.</div>
-                   <div *ngIf="price.errors.min"> Price should be 0 or higher.</div>
-               </div>
+                    <div *ngIf="price.errors.required"> Price is Required.</div>
+                    <div *ngIf="price.errors.min"> Price should be 0 or higher.</div>
+                </div>
             </div>
 
-           
+
 
             <div class="form-group">
                 <label for="category">Category</label>
-                <select id="category" class="form-control" [(ngModel)]="product.category" name="category" #category="ngModel" required> 
+                <select id="category" class="form-control" [(ngModel)]="product.category" name="category"
+                    #category="ngModel" required>
                     <option class="form-control" value=""></option>
-                    <option class="form-control" *ngFor="let c of (categories$|async)" [value]="c.key"> {{c.payload.val().name}} </option>
+                    <option class="form-control" *ngFor="let c of (categories$|async)" [value]="c.key">
+                        {{c.payload.val().name}} </option>
                 </select>
                 <div *ngIf="category.touched && category.invalid" class="alert alert-danger">
                     Category is Required.
-               </div>
+                </div>
             </div>
 
 
             <div class="form-group">
                 <label for="imageUrl">Image Url</label>
-                <input id="imageUrl" type="text" class="form-control" [(ngModel)]="product.imageUrl" name="imageUrl" #url="ngModel" required url>
+                <input id="imageUrl" type="text" class="form-control" [(ngModel)]="product.imageUrl" name="imageUrl"
+                    #url="ngModel" required url>
                 <div *ngIf="url.touched && url.invalid" class="alert alert-danger">
-                   <div *ngIf="url.errors.required"> Image URL is Required.</div>
-                   <div *ngIf="url.errors.url"> Please enter valid URL</div>
-               </div>
+                    <div *ngIf="url.errors.required"> Image URL is Required.</div>
+                    <div *ngIf="url.errors.url"> Please enter valid URL</div>
+                </div>
             </div>
 
             <button class="btn btn-primary mx-2">Save</button>
@@ -55,14 +60,7 @@
     </div>
 
     <div class="col-lg-6">
-        <div *ngIf="product.title" class="card" style="width: 18rem;">
-            <img class="card-img-top" [src] = "url.value" >
-            <div class="card-body">
-              <h5 class="card-title">{{title.value}}</h5>
-              <p class="card-text">{{ price.value | currency:'USD':true }}</p>
-              
-            </div>
-          </div>
+        <app-product-card [product]="product" [show-actions]="false"></app-product-card>
     </div>
 
 </div>

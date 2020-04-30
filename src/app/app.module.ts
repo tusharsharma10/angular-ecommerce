@@ -27,6 +27,8 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from './service/product.service';
 import {CustomFormsModule} from 'ngx-custom-validators';
 import { DataTablesModule } from 'angular-datatables';
+import { ProductFliterComponent } from './products/product-fliter/product-fliter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 
 @NgModule({
@@ -43,6 +45,8 @@ import { DataTablesModule } from 'angular-datatables';
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent,
+    ProductFliterComponent,
+    ProductCardComponent,
     
     ],
   imports: [

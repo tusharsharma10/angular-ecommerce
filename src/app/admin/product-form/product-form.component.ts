@@ -17,7 +17,7 @@ export class ProductFormComponent implements OnInit {
 
   categories$;
   product:Product = {category:"", price:0, imageUrl:"",title:""};
-  product2;
+  temp;
   id;
 
 
@@ -36,12 +36,12 @@ export class ProductFormComponent implements OnInit {
       .getOneProduct(this.id)
       .snapshotChanges()
       .pipe( take(1) )
-      .subscribe( p => {this.product2 = p.payload.val();
+      .subscribe( p => {this.temp = p.payload.val();
         
-        this.product.category = this.product2.category;
-        this.product.price = this.product2.price;
-        this.product.imageUrl = this.product2.imageUrl;
-        this.product.title = this.product2.title;
+        this.product.category = this.temp.category;
+        this.product.price = this.temp.price;
+        this.product.imageUrl = this.temp.imageUrl;
+        this.product.title = this.temp.title;
        
       });
 
