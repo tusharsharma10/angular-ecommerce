@@ -22,8 +22,8 @@ export class ProductCardComponent implements OnInit  {
 
   }
 
-  addToCart(product){
-    this.cartService.addToCart(product);
+  addToCart(){
+    this.cartService.addToCart(this.p);
   }
 
   getQuantity(){
@@ -32,6 +32,15 @@ export class ProductCardComponent implements OnInit  {
     let item = this.shoppingCart.items[this.p.key];
     return item ? item.quantity : 0;
 }
+
+removeFromCart(){
+ 
+  this.cartService.removeFromCart(this.p);
+
+}
+
+  
+
 
 
 }

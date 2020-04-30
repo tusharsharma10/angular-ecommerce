@@ -57,4 +57,24 @@ export class ShoppingCartService {
 
   }
 
+
+
+ async removeFromCart(product:Product){
+
+  let cartId = await this.getOrCreateCartId();
+  let item$ = this.getItem(cartId,product.key);
+
+  item$.snapshotChanges().pipe(take(1)).subscribe(item => {
+
+    let temp: any = item.payload;
+
+    if ((temp).exists())
+      item$.update({ quantity: temp.val().quantity - 1 });
+
+});
+
+
+  }
+
+
 }
