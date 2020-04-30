@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { AppUser } from '../models/app-user';
 import { ShoppingCartService } from '../service/shopping-cart.service';
+import { Observable } from 'rxjs';
+import { ShoppingCart } from '../models/shopping-cart.model';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +13,7 @@ import { ShoppingCartService } from '../service/shopping-cart.service';
 export class NavbarComponent implements OnInit {
 
 appUser:AppUser;  
-shoppingCartItemCount:number;
+cart$:Observable<ShoppingCart>
 
   constructor(private authService: AuthService , private cartService:ShoppingCartService) { 
     
@@ -22,18 +24,8 @@ shoppingCartItemCount:number;
   
     this.authService.appUser$.subscribe(user => this.appUser = user);
    
-   let cart$ = await (await this.cartService.getCart()).snapshotChanges();
-
-   cart$.subscribe( cart => {
-
-    let temp:any = cart.payload.val();
-    this.shoppingCartItemCount = 0;
-    for(let pId in temp.items){
-      this.shoppingCartItemCount += temp.items[pId].quantity;
-    }
-
-   });
-
+     this.cart$ =  (await this.cartService.getCart());
+     
   }
 
   logout() {
