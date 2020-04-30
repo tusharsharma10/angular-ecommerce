@@ -45,16 +45,9 @@ export class ProductFormComponent implements OnInit {
         this.product.key = key;
         this.product.productDetails = new ProductDetails();
         this.product.productDetails = temp;
-     
+       
       });
        
-     
-
-     
-     
-     
-      
-
     }
      
                                         

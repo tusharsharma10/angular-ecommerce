@@ -1,4 +1,5 @@
 import { ShoppingCartItem } from './shopping-cart-item.model';
+import { Product } from './product.model';
 
 export class ShoppingCart {
 
@@ -35,6 +36,17 @@ export class ShoppingCart {
         }
 
         return sum;
+    }
+
+
+    getQuantity(product:Product){
+
+        if(!this.itemsMap) return;
+        
+        let item = this.itemsMap[product.key];
+        return item ? item.quantity : 0;
+        
+        
     }
 
 }

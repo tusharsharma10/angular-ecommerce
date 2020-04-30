@@ -30,6 +30,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { ProductFliterComponent } from './products/product-fliter/product-fliter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ShoppingCartService } from './service/shopping-cart.service';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { ShoppingCartService } from './service/shopping-cart.service';
     ProductFormComponent,
     ProductFliterComponent,
     ProductCardComponent,
+    ProductQuantityComponent,
     
     ],
   imports: [

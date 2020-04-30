@@ -89,4 +89,11 @@ export class ShoppingCartService {
   }
 
 
+
+  async clearCart(){
+
+    let cartId = await this.getOrCreateCartId();
+    this.db.object('/shopping-carts/'+cartId+'/items').remove();
+  }
+
 }
